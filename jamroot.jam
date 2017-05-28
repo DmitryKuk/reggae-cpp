@@ -17,7 +17,7 @@ if ! $(BOOST_ROOT)
 use-project boost : $(BOOST_ROOT) ;
 
 
-project regex-tester
+project reggae-cpp
 	: build-dir build
 	: requirements <threading>single <cxxflags>-std=c++14
 	: default-build <variant>release

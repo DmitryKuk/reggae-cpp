@@ -1,0 +1,27 @@
+# Author: Dmitry Kukovinets (d1021976@gmail.com), 28.05.2017, 20:00
+
+
+# Boost libs
+import os ;
+BOOST_ROOT = [ os.environ BOOST_ROOT ] ;
+if ! $(BOOST_ROOT)
+{
+	import errors ;
+	errors.user-error
+		: "Environment variable BOOST_ROOT not set."
+		: "Please, set it with path to boost sources as value."
+		: "Example (add to ~/.bashrc): export BOOST_ROOT='/path/to/boost_1_62'"
+		;
+}
+
+use-project boost : $(BOOST_ROOT) ;
+
+
+project regex-tester
+	: build-dir build
+	: requirements <threading>single <cxxflags>-std=c++14
+	: default-build <variant>release
+	;
+
+
+build-project src ;
